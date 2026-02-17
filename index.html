@@ -213,6 +213,9 @@ function checkPassword(){
     const value = document.
 getElementById("password").value;
 
+    // تنظيف أي كلاس قديم
+    result.classList.remove("success","error","show");
+
     circle.style.display="none";
     stopHearts();
 
@@ -226,11 +229,14 @@ getElementById("password").value;
         document.body.addEventListener("click", resetGate, { once:true });
     }
 
-    result.classList.add("show");
+    // تأخير بسيط لضمان تفعيل الانيميشن
+    setTimeout(()=>{
+        result.classList.add("show");
+    },50);
 }
 
 function resetGate(){
-    result.classList.remove("show","error");
+    result.classList.remove("show","error","success");
     result.innerHTML="";
     circle.style.display="flex";
     circle.classList.remove("active");
