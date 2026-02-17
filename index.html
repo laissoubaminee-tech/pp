@@ -169,7 +169,7 @@ button:hover{
 <div class="circle" id="circle">
     <div class="form">
         <input type="text" id="password" placeholder="••••••••••">
-        <button onclick="checkPassword()">تأكيد</button>
+        <button onclick="checkPassword(event)">تأكيد</button>
     </div>
     <div class="title">ادخلي كلمة السر ازين 🤭</div>
 </div>
@@ -209,11 +209,13 @@ circle.addEventListener("click",()=>{
     circle.classList.add("active");
 });
 
-function checkPassword(){
-    const value = document.
-getElementById("password").value;
+function checkPassword(event){
 
-    // تنظيف أي كلاس قديم
+    event.
+stopPropagation(); // 🔥 يمنع اختفاء الرسالة فورًا
+
+    const value = document.getElementById("password").value;
+
     result.classList.remove("success","error","show");
 
     circle.style.display="none";
@@ -229,7 +231,6 @@ getElementById("password").value;
         document.body.addEventListener("click", resetGate, { once:true });
     }
 
-    // تأخير بسيط لضمان تفعيل الانيميشن
     setTimeout(()=>{
         result.classList.add("show");
     },50);
