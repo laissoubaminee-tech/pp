@@ -224,12 +224,16 @@ stopPropagation(); // 🔥 يمنع اختفاء الرسالة فورًا
     if(value==="17022005R.A"){
         result.innerHTML="🫣 اجمل شطوورتيي";
         result.classList.add("success");
-    }else{
-        result.innerHTML="😡 مشي هكا قلنا وشبيك";
-        result.classList.add("error");
 
+}else{
+    result.innerHTML="😡 مشي هكا قلنا وشبيك";
+    result.classList.add("error");
+
+    // ننتظر 300ms قبل السماح بالضغط لإعادة المحاولة
+    setTimeout(()=>{
         document.body.addEventListener("click", resetGate, { once:true });
-    }
+    },300);
+}
 
     setTimeout(()=>{
         result.classList.add("show");
